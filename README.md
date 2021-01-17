@@ -10,6 +10,7 @@ Finds the intersection of two lines.
 
 
 ## Description
+
 `[x,y] = line_intersection([m1,b1],[m2,b2])` returns the intersection of two lines given in slope-intercept form:
 1. `[m1,b1]` specifies the first line in slope-intercept form: <img src="https://latex.codecogs.com/svg.latex?y=m_{1}x&plus;b_{1}" title="y=m_{1}x+b_{1}" />
 2. `[m2,b2]` specifies the second line in slope-intercept form: <img src="https://latex.codecogs.com/svg.latex?y=m_{2}x&plus;b_{2}" title="y=m_{2}x+b_{2}" />
