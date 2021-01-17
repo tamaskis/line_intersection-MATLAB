@@ -28,6 +28,7 @@
 % v1.0.0: 09-Jan-2021, First version.
 % v1.0.1; 17-Jan-2021, Added external documentation, changed some comments,
 %                      added warning message if the two lines are parallel.
+% v1.0.2; 17-Jan-2021, Updated external documentation.
 
 
 
