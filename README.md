@@ -51,33 +51,3 @@ This yields the result
     y_int =
     
        172
-
-
-## Derivation
-
-Consider the following two lines given in point-slope form:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y-y_{1}=m_{1}\left(x-x_{1}\right)" title="y-y_{1}=m_{1}\left(x-x_{1}\right)" />\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y-y_{2}=m_{2}\left(x-x_{2}\right)" title="y-y_{2}=m_{2}\left(x-x_{2}\right)" />
-
-If <img src="https://latex.codecogs.com/svg.latex?\left(x_{\mathrm{int}},y_{\mathrm{int}}\right)" title="\left(x_{\mathrm{int}},y_{\mathrm{int}}\right)" /> is the intersection point, then
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}-y_{1}=m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" title="y_{\mathrm{int}}-y_{1}=m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" />\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}-y_{2}=m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" title="y_{\mathrm{int}}-y_{2}=m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" />
-
-Solving both for <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}" title="y_{\mathrm{int}}" />,
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}=y_{1}&plus;m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" title="y_{\mathrm{int}}=y_{1}+m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" />\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}=y_{2}&plus;m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" title="y_{\mathrm{int}}=y_{2}+m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" />
-
-Equating the two equations,
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{1}&plus;m_{1}\left(x_{\mathrm{int}}-x_{1}\right)=y_{2}&plus;m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" title="y_{1}+m_{1}\left(x_{\mathrm{int}}-x_{1}\right)=y_{2}+m_{2}\left(x_{\mathrm{int}}-x_{2}\right)" />
-
-Solving for <img src="https://latex.codecogs.com/svg.latex?x_{\mathrm{int}}" title="x_{\mathrm{int}}" />,
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?x_{\mathrm{int}}=\frac{\left(m_{1}x_{1}-m_{2}x_{2}\right)-\left(y_{1}-y_{2}\right)}{m_{1}-m_{2}}" title="x_{\mathrm{int}}=\frac{\left(m_{1}x_{1}-m_{2}x_{2}\right)-\left(y_{1}-y_{2}\right)}{m_{1}-m_{2}}" />
-
-To get <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}" title="y_{\mathrm{int}}" />, we can use either line. We choose to use line 1.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y_{\mathrm{int}}=y_{1}&plus;m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" title="y_{\mathrm{int}}=y_{1}+m_{1}\left(x_{\mathrm{int}}-x_{1}\right)" />
