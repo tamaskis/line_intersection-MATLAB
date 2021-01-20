@@ -2,9 +2,6 @@
 
 % Example for using the line_intersection function.
 
-% AUTHOR: Tamas Kis
-% LAST MODIFIED: January 9, 2021
-
 
 
 %% SCRIPT SETUP
@@ -42,5 +39,5 @@ plot(x,line1,'linewidth',1);
 plot(x,line2,'linewidth',1);
 plot(x_int,y_int,'o','color','k','linewidth',2,'markersize',10);
 hold off;
-xlabel("$x$",'interpreter','latex','fontsize',18);
-ylabel("$y$",'interpreter','latex','fontsize',18);
+xlabel('$x$','interpreter','latex','fontsize',18);
+ylabel('$y$','interpreter','latex','fontsize',18);
