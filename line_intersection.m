@@ -13,11 +13,15 @@
 %   The two lines may also be defined using different conventions, for
 %   example: [x,y] = line_intersection([m1,b1],[x2,y2,m2]).
 %
-% See https://github.com/tamaskis/line_intersection-MATLAB for additional 
-% documentation and examples. Examples can also be found in EXAMPLE.m 
-% (included with download).
+% MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85428-intersection-of-two-lines-line_intersection
+% GitHub: https://github.com/tamaskis/line_intersection-MATLAB
+%
+% See "DOCUMENTATION.pdf" for additional documentation and examples. 
+% Examples can also be found in EXAMPLES.m. Both of these files are 
+% included with the download.
 %
 % Copyright (c) 2021 Tamas Kis
+% Last Update: 2021-03-24
 
 
 
