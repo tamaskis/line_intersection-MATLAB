@@ -22,33 +22,6 @@ Finds the intersection of two lines.
 The two lines may also be defined using different conventions, for example `line_intersection([m1,b1],[x2,y2,m2])`.
 
 
-## Example
+## Additional Documentation and Examples
 
-Consider the two lines
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y=5x&plus;2" title="y=5x+2" />\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/svg.latex?y-4=7\left(x-10\right)" title="y-4=7\left(x-10\right)" />
-
-To find the intersection point, we note that for line 1, we have <img src="https://latex.codecogs.com/svg.latex?m_{1}=5" title="m_{1}=5" /> and <img src="https://latex.codecogs.com/svg.latex?b_{1}=2" title="b_{1}=2" />, and that for line 2, we have <img src="https://latex.codecogs.com/svg.latex?x_{2}=10" title="x_{2}=10" />, <img src="https://latex.codecogs.com/svg.latex?y_{2}=4" title="y_{2}=4" />, and <img src="https://latex.codecogs.com/svg.latex?m_{2}=7" title="m_{2}=7" />.
-
-    % line 1 parameters
-    m1 = 5;
-    b1 = 2;
-    
-    % line 2 parameters
-    x2 = 10;
-    y2 = 4;
-    m2 = 7;
-    
-    % finds intersection point
-    [x_int,y_int] = line_intersection([m1,b1],[x2,y2,m2])
-    
-This yields the result
-
-    x_int =
-
-        34
-    
-    y_int =
-    
-       172
+See "DOCUMENTATION.pdf" for additional documentation and examples.
