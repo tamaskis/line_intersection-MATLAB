@@ -1,6 +1,6 @@
 %% Copyright (c) 2021 Tamas Kis
 
-% Example for using the line_intersection function.
+% Examples for using the line_intersection function.
 
 
 
@@ -32,7 +32,7 @@ x = 0:0.1:50;
 line1 = m1*x+b1;
 line2 = y2+m2*(x-x2);
 
-% plots
+% plot
 figure;
 hold on;
 plot(x,line1,'linewidth',1);
