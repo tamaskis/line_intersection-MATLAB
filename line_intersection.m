@@ -7,14 +7,16 @@
 %   [x,y] = line_intersection([m1,b1],[x2,y2,m2])
 %   [x,y] = line_intersection([x1,y1,m1],[x2,y2,m2])
 %
+% Copyright © 2021 Tamas Kis
+% Last Update: 2021-06-09
+%
+%--------------------------------------------------------------------------
+%
 % MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85428-intersection-of-two-lines-line_intersection
 % GitHub: https://github.com/tamaskis/line_intersection-MATLAB
 %
 % See EXAMPLES.mlx for examples and "DOCUMENTATION.pdf" for additional 
 % documentation. Both of these files are included with the download.
-%
-% Copyright © 2021 Tamas Kis
-% Last Update: 2021-06-08
 %
 %--------------------------------------------------------------------------
 %
