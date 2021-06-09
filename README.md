@@ -24,4 +24,4 @@ Finds the intersection of two lines.
 ## Examples and Additional Documentation
 
    -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples.
-   -  See "DOCUMENTATION.pdf" for additional documentation.
+   -  See "DOCUMENTATION.pdf" (included with download, also available at https://github.com/tamaskis/line_intersection-MATLAB/blob/main/DOCUMENTATION.pdf) for additional documentation.
