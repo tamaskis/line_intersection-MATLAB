@@ -7,8 +7,11 @@
 %   [x,y] = line_intersection([m1,b1],[x2,y2,m2])
 %   [x,y] = line_intersection([x1,y1,m1],[x2,y2,m2])
 %
+% See also polyxpoly.
+%
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-06-09
+% Contact: tamas.a.kis@outlook.com
+% Last Update: 2021-07-09
 %
 %--------------------------------------------------------------------------
 %
@@ -20,9 +23,9 @@
 %
 %--------------------------------------------------------------------------
 %
-% -------
-% INPUTS:
-% -------
+% ------
+% INPUT:
+% ------
 %   line1   - parameters defining line 1, two options:
 %               --> [m1,b1]: slope-intercept form
 %               --> [x1,y1,m1]: point-slope form
@@ -30,9 +33,9 @@
 %               --> [m2,b2]: slope-intercept form
 %               --> [x2,y2,m2]: point-slope form
 %
-% --------
-% OUTPUTS:
-% --------
+% -------
+% OUTPUT:
+% -------
 %   x       - x-coordinate of the intersection of the two lines
 %   y       - y-coordinate of the intersection of the two lines
 %
