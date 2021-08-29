@@ -10,40 +10,36 @@
 % See also polyxpoly.
 %
 % Copyright © 2021 Tamas Kis
+% Last Update: 2021-08-28
+% Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
-% Last Update: 2021-07-09
 %
-%--------------------------------------------------------------------------
-%
-% MATLAB Central File Exchange: https://www.mathworks.com/matlabcentral/fileexchange/85428-intersection-of-two-lines-line_intersection
-% GitHub: https://github.com/tamaskis/line_intersection-MATLAB
-%
-% See EXAMPLES.mlx for examples and "DOCUMENTATION.pdf" for additional 
-% documentation. Both of these files are included with the download.
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/documentation/Intersection_of_Two_Lines.pdf
 %
 %--------------------------------------------------------------------------
 %
 % ------
 % INPUT:
 % ------
-%   line1   - parameters defining line 1, two options:
+%   line1   - (1×2 or 1×3 double) parameters defining line 1, two options:
 %               --> [m1,b1]: slope-intercept form
 %               --> [x1,y1,m1]: point-slope form
-% 	line2   - parameters defining line 2, two options:
+% 	line2   - (1×2 or 1×3 double) parameters defining line 2, two options:
 %               --> [m2,b2]: slope-intercept form
 %               --> [x2,y2,m2]: point-slope form
 %
 % -------
 % OUTPUT:
 % -------
-%   x       - x-coordinate of the intersection of the two lines
-%   y       - y-coordinate of the intersection of the two lines
+%   x       - (1×1 double) x-coordinate of intersection of the two lines
+%   y       - (1×1 double) y-coordinate of intersection of the two lines
 %
 % -----
 % NOTE:
 % -----
-%   --> slope-intercept form: y=mx+b
-%   --> point-slope form: y-y0=m(x-x0)
+%   --> slope-intercept form: y = mx + b
+%   --> point-slope form: y - y0 = m(x - x0)
 %
 %==========================================================================
 function [x,y] = line_intersection(line1,line2)
@@ -74,7 +70,7 @@ function [x,y] = line_intersection(line1,line2)
     x = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
     y = m1*(x-x1)+y1;
     
-    % produces warning if the two lines are parallel
+    % displays warning if the two lines are parallel
     if abs(x) == inf
         warning('The two lines are parallel.')
     end
