@@ -25,7 +25,7 @@
 %   line1   - (1×2 or 1×3 double) parameters defining line 1, two options:
 %               --> [m1,b1]: slope-intercept form
 %               --> [x1,y1,m1]: point-slope form
-% 	line2   - (1×2 or 1×3 double) parameters defining line 2, two options:
+%   line2   - (1×2 or 1×3 double) parameters defining line 2, two options:
 %               --> [m2,b2]: slope-intercept form
 %               --> [x2,y2,m2]: point-slope form
 %
