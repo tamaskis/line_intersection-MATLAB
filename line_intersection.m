@@ -43,18 +43,20 @@
 %   --> slope-intercept form: y = mx + b
 %   --> point-slope form: y - y0 = m(x - x0)
 %   --> two point form: (x1,y1) and (x2,y2) are two points on the line
-%   --> If inputing a vertical line in slope-intercept or point-slope form,
-%       use a slope of "Inf".
 %
 % -----------
 % EDGE CASES:
 % -----------
-%   --> If the two lines are parallel, a warning is displayed.
+%   --> Vertical lines can be defined using the vertical line form or the 
+%       two point form.
+%   --> If the two lines are parallel (but not collinear), the function 
+%       returns positive or negative infinity for the coordinates of the 
+%       intersection, and a warning is displayed.
+%   --> If the two lines are collinear (but not vertical), the function 
+%       returns "[NaN,NaN]" and displays a warning.
 %   --> If the two lines are vertical and collinear, the function returns
-%       the x-coordinate of the line for the x-coordinate of the
-%       intersection point, and "NaN" for its y-coordinate.
-%   --> If the two lines are collinear, the function returns "[NaN,NaN]"
-%       and prints a warning message.
+%       the x-coordinate of the line for the x-coordinate of the 
+%       intersection, and "NaN" for the y-coordinate of the intersection.
 %
 %==========================================================================
 function [x,y] = line_intersection(line1,line2)
@@ -110,10 +112,10 @@ function [x,y] = line_intersection(line1,line2)
     % INPUT:
     % ------
     %   line    - (1×1, 1×2, 1×3, or 1x4 double) params defining line 1:
-    %               --> x: vertical line form (x-intercept of vertical
+    %               --> x0: vertical line form (x-intercept of vertical
     %                      line)
     %               --> [m,b]: slope-intercept form
-    %               --> [x,y,m]: point-slope form
+    %               --> [x0,y0,m]: point-slope form
     %               --> [x1,y1,x2,y2]: two point form
     %
     % -------
@@ -128,7 +130,6 @@ function [x,y] = line_intersection(line1,line2)
     % -----
     %   --> If line is vertical, the function returns [x,NaN,Inf], where 
     %       "x" is the x-intercept of the vertical line.
-    %   
     %
     %======================================================================
     function [x,y,m] = get_point_slope(line)
