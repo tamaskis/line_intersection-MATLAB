@@ -70,7 +70,7 @@ function [x_int,y_int] = line_intersection(line1,line2)
         if x1 == x2
             x_int = x1;
             y_int = NaN;
-            warning('The two lines are collinear');
+            warning('The two lines are collinear.');
         else
             x_int = Inf;
             y_int = Inf;
