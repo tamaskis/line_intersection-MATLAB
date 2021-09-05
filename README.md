@@ -5,20 +5,17 @@ Finds the intersection of two lines.
 
 ## Syntax
 
-`[x,y] = line_intersection([m1,b1],[m2,b2])`\
-`[x,y] = line_intersection([x1,y1,m1],[m2,b2])`\
-`[x,y] = line_intersection([m1,b1],[x2,y2,m2])`\
-`[x,y] = line_intersection([x1,y1,m1],[x2,y2,m2])`
+`[x_int,y_int] = line_intersection(line1,line2)`
 
 
 ## Description
 
-`[x,y] = line_intersection(__)` returns the intersection `[x,y]` of two lines, which can be defined as follows:
+`[x_int,y_int] = line_intersection(line1,line2)` returns the intersection `[x_int,y_int]` of two lines. Each line can be defined in four different ways:
 
-   1.  `[m1,b1]` specifies the first line in slope-intercept form: <img src="https://latex.codecogs.com/svg.latex?\inline&space;y=m_1&space;x+b_1"/> 
-   2.  `[x1,y1,m1]` specifies the first line in point-slope form: <img src="https://latex.codecogs.com/svg.latex?\inline&space;y-y_1&space;=m_1&space;(x-x_1&space;)"/> 
-   3.  `[m2,b2]` specifies the second line in slope-intercept form: <img src="https://latex.codecogs.com/svg.latex?\inline&space;y=m_2&space;x+b_2"/> 
-   4.  `[x2,y2,m2]` specifies the first line in point-slope form: <img src="https://latex.codecogs.com/svg.latex?\inline&space;y-y_2&space;=m_2&space;(x-x_2&space;)"/> 
+   1. `line = x0`: vertical line form (vertical line defined as <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_0" title="x=x_0" />)
+   2. `line = [m,b]`: slope-intercept form (<img src="https://latex.codecogs.com/svg.latex?\inline&space;y=m&space;x+b"/>) 
+   3. `line = [x0,y0,m]`: point-slope form (<img src="https://latex.codecogs.com/svg.latex?\inline&space;y-y_0&space;=m&space;(x-x_0&space;)"/>)
+   4. `line = [x1,y1,x2,y2]`: two point form (line that contains the points <img src="https://latex.codecogs.com/svg.latex?\inline&space;(x_1,y_1)" title="(x_1,y_1)" /> and <img src="https://latex.codecogs.com/svg.latex?\inline&space;(x_2,y_2)" title="(x_2,y_2)" />)
 
 
 ## Examples and Additional Documentation

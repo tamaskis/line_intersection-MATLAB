@@ -2,15 +2,12 @@
 %
 % line_intersection  Finds the intersection of two lines.
 %
-%   [x,y] = line_intersection([m1,b1],[m2,b2])
-%   [x,y] = line_intersection([x1,y1,m1],[m2,b2])
-%   [x,y] = line_intersection([m1,b1],[x2,y2,m2])
-%   [x,y] = line_intersection([x1,y1,m1],[x2,y2,m2])
+%   [x,y] = line_intersection(line1,line2)
 %
 % See also polyxpoly.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2021-08-28
+% Last Update: 2021-09-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,12 +19,16 @@
 % ------
 % INPUT:
 % ------
-%   line1   - (1×2 or 1×3 double) parameters defining line 1, two options:
+%   line1   - (1×1, 1×2, 1×3, or 1x4 double) parameters defining line 1:
+%               --> x1: vertical line form (x-intercept of vertical line)
 %               --> [m1,b1]: slope-intercept form
 %               --> [x1,y1,m1]: point-slope form
-%   line2   - (1×2 or 1×3 double) parameters defining line 2, two options:
+%               --> [x1,y1,x2,y2]: two point form
+%   line2   - (1×1, 1×2, 1×3, or 1x4 double) parameters defining line 2:
+%               --> x2: vertical line form (x-intercept of vertical line)
 %               --> [m2,b2]: slope-intercept form
 %               --> [x2,y2,m2]: point-slope form
+%               --> [x3,y3,x4,y4]: two point form
 %
 % -------
 % OUTPUT:
@@ -38,41 +39,131 @@
 % -----
 % NOTE:
 % -----
+%   --> vertical line form: x = x0
 %   --> slope-intercept form: y = mx + b
 %   --> point-slope form: y - y0 = m(x - x0)
+%   --> two point form: (x1,y1) and (x2,y2) are two points on the line
+%   --> If inputing a vertical line in slope-intercept or point-slope form,
+%       use a slope of "Inf".
+%
+% -----------
+% EDGE CASES:
+% -----------
+%   --> If the two lines are parallel, a warning is displayed.
+%   --> If the two lines are vertical and collinear, the function returns
+%       the x-coordinate of the line for the x-coordinate of the
+%       intersection point, and "NaN" for its y-coordinate.
+%   --> If the two lines are collinear, the function returns "[NaN,NaN]"
+%       and prints a warning message.
 %
 %==========================================================================
 function [x,y] = line_intersection(line1,line2)
 
-    % extracts/determines parameters for line 1
-    if length(line1) == 2
-        x1 = 0;         % 0 because we know the y-intercept b1
-        y1 = line1(2);  % b1
-        m1 = line1(1);  % m1
+    % determines point and slope for both lines
+    [x1,y1,m1] = get_point_slope(line1);
+    [x2,y2,m2] = get_point_slope(line2);
+    
+    % both lines vertical
+    if (abs(m1) == Inf) && (abs(m2) == Inf)
+        if x1 == x2
+            x = x1;
+            y = NaN;
+            warning('The two lines are collinear');
+        else
+            x = Inf;
+            y = Inf;
+        end
+        
+    % line 1 vertical
+    elseif abs(m1) == Inf
+        x = x1;
+        y = y2+m2*(x-x2);
+        
+    % line 2 vertical
+    elseif abs(m2) == Inf
+        x = x2;
+        y = y1+m1*(x-x1);
+        
+    % neither line vertical
     else
-        x1 = line1(1);  % directly from point-slope form
-        y1 = line1(2);  % directly from point-slope form
-        m1 = line1(3);  % directly from point-slope form
+        x = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
+        y = m1*(x-x1)+y1;
     end
     
-    % extracts/determines parameters for line 2
-    if length(line2) == 2
-        x2 = 0;         % 0 because we know the y-intercept b2
-        y2 = line2(2);  % b2
-        m2 = line2(1);  % m2
-    else
-        x2 = line2(1);  % directly from point-slope form
-        y2 = line2(2);  % directly from point-slope form
-        m2 = line2(3);  % directly from point-slope form
+    % displays warning if two (non-vertical) lines are collinear (results
+    % in (x,y) = (NaN,NaN))
+    if isnan(x) && isnan(y)
+        warning('The two lines are collinear');
     end
     
-    % finds intersection point
-    x = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
-    y = m1*(x-x1)+y1;
-    
-    % displays warning if the two lines are parallel
-    if abs(x) == inf
+    % displays warning if the two lines are parallel (results in x = ±∞)
+    if abs(x) == Inf
         warning('The two lines are parallel.')
+    end
+    
+    %======================================================================
+    % get_point_slope  Given an input line of any form, determines its 
+    % point-slope form.
+    %----------------------------------------------------------------------
+    %
+    % ------
+    % INPUT:
+    % ------
+    %   line    - (1×1, 1×2, 1×3, or 1x4 double) params defining line 1:
+    %               --> x: vertical line form (x-intercept of vertical
+    %                      line)
+    %               --> [m,b]: slope-intercept form
+    %               --> [x,y,m]: point-slope form
+    %               --> [x1,y1,x2,y2]: two point form
+    %
+    % -------
+    % OUTPUT:
+    % -------
+    %   x       - (1×1 double) x-coordinate of point on line
+    %   y       - (1×1 double) y-coordinate of point on line
+    %   m       - (1×1 double) slope of line
+    %
+    % -----
+    % NOTE:
+    % -----
+    %   --> If line is vertical, the function returns [x,NaN,Inf], where 
+    %       "x" is the x-intercept of the vertical line.
+    %   
+    %
+    %======================================================================
+    function [x,y,m] = get_point_slope(line)
+        
+        % input given in vertical line form
+        if length(line) == 1
+            x = line(1);
+            y = NaN;
+            m = Inf;
+        
+        % input given in slope-intercept form
+        elseif length(line) == 2
+            x = 0;          % x-coordinate of the y-intercept
+            y = line(2);    % y-coordinate of the y-intercept
+            m = line(1);
+        
+        % input given in point-slope form
+        elseif length(line) == 3
+            x = line(1);
+            y = line(2);
+            m = line(3);
+            
+        % input given in two point form
+        else
+            m = (line(4)-line(2))/(line(3)-line(1));
+            if abs(m) == Inf
+                x = line(1);    % x-intercept of vertical line
+                y = NaN;
+                m = Inf;
+            else
+                x = line(1);    % x-coordinate of first point
+                y = line(2);    % y-coordinate of first point
+            end
+        end
+        
     end
     
 end
