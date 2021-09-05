@@ -33,8 +33,8 @@
 % -------
 % OUTPUT:
 % -------
-%   x_int	- (1×1 double) x-coordinate of intersection of the two lines
-%   y_int 	- (1×1 double) y-coordinate of intersection of the two lines
+%   x_int   - (1×1 double) x-coordinate of intersection of the two lines
+%   y_int   - (1×1 double) y-coordinate of intersection of the two lines
 %
 % -----
 % NOTE:
