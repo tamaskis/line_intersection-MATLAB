@@ -95,7 +95,7 @@ function [x_int,y_int] = line_intersection(line1,line2)
     % displays warning if two (non-vertical) lines are collinear (results
     % in (x,y) = (NaN,NaN))
     if isnan(x_int) && isnan(y_int)
-        warning('The two lines are collinear');
+        warning('The two lines are collinear.');
     end
     
     % displays warning if the two lines are parallel (results in x = ±∞)
