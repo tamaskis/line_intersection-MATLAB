@@ -2,7 +2,7 @@
 %
 % line_intersection  Finds the intersection of two lines.
 %
-%   [x,y] = line_intersection(line1,line2)
+%   [x_int,y_int] = line_intersection(line1,line2)
 %
 % See also polyxpoly.
 %
@@ -33,8 +33,8 @@
 % -------
 % OUTPUT:
 % -------
-%   x       - (1×1 double) x-coordinate of intersection of the two lines
-%   y       - (1×1 double) y-coordinate of intersection of the two lines
+%   x_int	- (1×1 double) x-coordinate of intersection of the two lines
+%   y_int 	- (1×1 double) y-coordinate of intersection of the two lines
 %
 % -----
 % NOTE:
@@ -59,7 +59,7 @@
 %       intersection, and "NaN" for the y-coordinate of the intersection.
 %
 %==========================================================================
-function [x,y] = line_intersection(line1,line2)
+function [x_int,y_int] = line_intersection(line1,line2)
 
     % determines point and slope for both lines
     [x1,y1,m1] = get_point_slope(line1);
@@ -68,38 +68,38 @@ function [x,y] = line_intersection(line1,line2)
     % both lines vertical
     if (abs(m1) == Inf) && (abs(m2) == Inf)
         if x1 == x2
-            x = x1;
-            y = NaN;
+            x_int = x1;
+            y_int = NaN;
             warning('The two lines are collinear');
         else
-            x = Inf;
-            y = Inf;
+            x_int = Inf;
+            y_int = Inf;
         end
         
     % line 1 vertical
     elseif abs(m1) == Inf
-        x = x1;
-        y = y2+m2*(x-x2);
+        x_int = x1;
+        y_int = y2+m2*(x_int-x2);
         
     % line 2 vertical
     elseif abs(m2) == Inf
-        x = x2;
-        y = y1+m1*(x-x1);
+        x_int = x2;
+        y_int = y1+m1*(x_int-x1);
         
     % neither line vertical
     else
-        x = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
-        y = m1*(x-x1)+y1;
+        x_int = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
+        y_int = m1*(x_int-x1)+y1;
     end
     
     % displays warning if two (non-vertical) lines are collinear (results
     % in (x,y) = (NaN,NaN))
-    if isnan(x) && isnan(y)
+    if isnan(x_int) && isnan(y_int)
         warning('The two lines are collinear');
     end
     
     % displays warning if the two lines are parallel (results in x = ±∞)
-    if abs(x) == Inf
+    if abs(x_int) == Inf
         warning('The two lines are parallel.')
     end
     
