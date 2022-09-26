@@ -19,7 +19,7 @@ Finds the intersection of two lines.
    3. `l1 = [x1,y1,m1]`: point-slope form (<img src="https://latex.codecogs.com/svg.latex?\inline&space;y-y_{1}=m_{1}\left(x-x_{1}\right)"/>)
    4. `l1 = [x1,y1,x2,y2]`: two point form (line that contains the points <img src="https://latex.codecogs.com/svg.latex?\inline&space;(x_{1},y_{1})"/> and <img src="https://latex.codecogs.com/svg.latex?\inline&space;(x_{2},y_{2})"/>)
 
-Line 2 can be defined in four different ways:
+- Line 2 can be defined in four different ways:
 
    1. `l2 = x2`: vertical line form (vertical line defined as <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{2}"/>)
    2. `l2 = [m2,b2]`: slope-intercept form (<img src="https://latex.codecogs.com/svg.latex?\inline&space;y=m_{2}x+b_{2}"/>) 
