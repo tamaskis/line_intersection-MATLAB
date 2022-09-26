@@ -58,70 +58,90 @@ function [x_int,y_int] = line_intersection(l1,l2)
     [x1,y1,m1] = get_point_slope(l1);
     [x2,y2,m2] = get_point_slope(l2);
 
-    % -----------------------------------------------
-    % Infinite intersection points (collinear lines).
-    % -----------------------------------------------
+    % -------------------------
+    % Vertical line edge cases.
+    % -------------------------
+
+    % edge case #1: vertical + noncollinear lines
+    if isnan(x_int) && isnan(y_int) && (x1 ~= x2)
+        x_int = NaN;
+        y_int = NaN;
+        warning('The two lines are parallel.');
+        return;
+    end
     
-    % case #2: vertical + collinear lines
-    if isnan(m1) && isnan(m2) && (x1 == x2)
+    % edge case #2: vertical + collinear lines
+    if isnan(x_int) && isnan(y_int) && (x1 == x2)
         x_int = NaN;
         y_int = NaN;
+        warning('The two lines are collinear.');
+        return;
+    end
+    
+    % -----------------------------
+    % Non-vertical line edge cases.
+    % -----------------------------
 
-    % case #3: nonvertical + collinear lines
-    elseif (m1 == m2) && ((y1-m1*x1) == (y2-m2*x2))
+    % edge case #3: nonvertical + collinear lines
+    if (m1 == m2) && ((y1-m*x1) == (y2-m*x2))
         x_int = NaN;
         y_int = NaN;
+        warning('The two lines are collinear.');
+        return;
+    end
+    
+    % edge case #4: nonvertical + parallel lines
+    if (m1 == m2) && ((y1-m*x1) ~= (y2-m*x2))
+        x_int = Inf;
+        y_int
+        warning('The two lines are parallel.');
+    end
+    
+    % both lines vertical
+    if isnan(m1) && isnan(m2)
+        if x1 == x2
+            x_int = x1;
+            y_int = NaN;
+            warning('The two lines are collinear.');
+        else
+            x_int = NaN;
+            y_int = NaN;
+            warning('The two lines are parallel.');
+        end
         
-    % ------------------------------------------
-    % Intersection at infinity (parallel lines).
-    % ------------------------------------------
-
-    % case #1: vertical + noncollinear lines
-    elseif isnan(m1) && isnan(m2) && (x1 ~= x2)
-        x_int = Inf;
-        y_int = Inf;
-
-    % case #4: nonvertical + parallel lines
-    elseif (m1 == m2) && ((y1-m1*x1) ~= (y2-m2*x2))
-        x_int = Inf;
-        y_int = Inf;
-
-    % --------------------------
-    % Single intersection point.
-    % --------------------------
-
-    % case #5: line 1 vertical + line 2 nonvertical
+    % line 1 vertical but line 2 is not
     elseif isnan(m1)
         x_int = x1;
         y_int = y2+m2*(x_int-x2);
         
-    % case #6: line 1 nonvertical + line 2 vertical
+    % line 2 vertical but line 1 is not
     elseif isnan(m2)
         x_int = x2;
         y_int = y1+m1*(x_int-x1);
         
-    % case #7: line 1 nonvertical + line 2 nonvertical
+    % neither line vertical
     else
         x_int = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
         y_int = m1*(x_int-x1)+y1;
-        
     end
-
-    % ---------
-    % Warnings.
-    % ---------
     
-    % displays warning if two (non-vertical) lines are collinear (results
+    % displays warning if two non-vertical lines are collinear (results
     % in (xᵢₙₜ,yᵢₙₜ) = (NaN,NaN))
-    if isnan(x_int) && isnan(y_int)
-        warning('The two lines are collinear.');
-    end
-    
-    % displays warning if the two lines are parallel (results in 
-    % (xᵢₙₜ,yᵢₙₜ) = (±∞,±∞))
-    if abs(x_int) == Inf
-        warning('The two lines are parallel.')
-    end
+
+%     % edge case #1: non-vertical collinear lines
+%     if isnan(x_int) && isnan(y_int)
+%         warning('The two lines are collinear.');
+%     end
+%     
+%     % displays warning if two non-vertical lines are parallel (results in 
+%     % xᵢₙₜ = ±∞)
+% 
+%     % edge case #2: parallel lines
+%     if abs(x_int) == Inf
+%         warning('The two lines are parallel.')
+%     end
+
+    % edge case #3: vertical collinear lines
     
     %======================================================================
     % get_point_slope  Converts a line of any form to point-slope form.
