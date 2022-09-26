@@ -10,7 +10,7 @@ Finds the intersection of two lines.
 
 ## Description
 
-`[x_int,y_int] = line_intersection(l1,l2)` returns the intersection `[x_int,y_int]` of two lines. \
+`[x_int,y_int] = line_intersection(l1,l2)` returns the intersection `[x_int,y_int]` of two lines.
 
 Line 1 can be defined in four different ways:
 
