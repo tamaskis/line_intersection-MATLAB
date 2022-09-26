@@ -12,7 +12,7 @@ Finds the intersection of two lines.
 
 `[x_int,y_int] = line_intersection(l1,l2)` returns the intersection `[x_int,y_int]` of two lines.
 
-Line 1 can be defined in four different ways:
+- Line 1 can be defined in four different ways:
 
    1. `l1 = x1`: vertical line form (vertical line defined as <img src="https://latex.codecogs.com/svg.latex?\inline&space;x=x_{1}"/>)
    2. `l1 = [m1,b1]`: slope-intercept form (<img src="https://latex.codecogs.com/svg.latex?\inline&space;y=m_{1}x+b_{1}"/>) 
