@@ -36,38 +36,42 @@
 %   x_int   - (1×1 double) x-coordinate of line intersection, xᵢₙₜ
 %   y_int   - (1×1 double) y-coordinate of line intersection, yᵢₙₜ
 %
-% -----------
-% EDGE CASES:
-% -----------
-%   --> TODO
-%   --> Vertical lines can be defined using the vertical line form or the 
-%       two point form.
-%   --> If the two lines are parallel (but not collinear), the function 
-%       returns positive or negative infinity for the coordinates of the 
-%       intersection, and a warning is displayed.
-%   --> If the two lines are collinear (but not vertical), the function 
-%       returns "[NaN,NaN]" and displays a warning.
-%   --> If the two lines are vertical and collinear, the function returns
-%       the x-coordinate of the line for the x-coordinate of the 
-%       intersection, and "NaN" for the y-coordinate of the intersection.
-%
 %==========================================================================
 function [x_int,y_int] = line_intersection(l1,l2)
     
     % converts both lines to point-slope form
     [x1,y1,m1] = get_point_slope(l1);
     [x2,y2,m2] = get_point_slope(l2);
-
+    
+    % --------------------------
+    % Single intersection point.
+    % --------------------------
+    
+    % case #1: line 1 nonvertical + line 2 nonvertical + not parallel
+    if (~isnan(m1)) && (~isnan(m2)) && (m1 ~= m2)
+        x_int = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
+        y_int = m1*(x_int-x1)+y1;
+        
+    % case #2: line 1 vertical + line 2 nonvertical
+    elseif isnan(m1) && (~isnan(m2))
+        x_int = x1;
+        y_int = y2+m2*(x_int-x2);
+        
+    % case #3: line 1 nonvertical + line 2 vertical
+    elseif ~isnan(m1) && isnan(m2)
+        x_int = x2;
+        y_int = y1+m1*(x_int-x1);
+        
     % -----------------------------------------------
     % Infinite intersection points (collinear lines).
     % -----------------------------------------------
     
-    % case #2: vertical + collinear lines
-    if isnan(m1) && isnan(m2) && (x1 == x2)
-        x_int = NaN;
+    % case #4: vertical + collinear
+    elseif isnan(m1) && isnan(m2) && (x1 == x2)
+        x_int = x1;
         y_int = NaN;
-
-    % case #3: nonvertical + collinear lines
+        
+    % case #5: nonvertical + collinear
     elseif (m1 == m2) && ((y1-m1*x1) == (y2-m2*x2))
         x_int = NaN;
         y_int = NaN;
@@ -75,38 +79,19 @@ function [x_int,y_int] = line_intersection(l1,l2)
     % ------------------------------------------
     % Intersection at infinity (parallel lines).
     % ------------------------------------------
-
-    % case #1: vertical + noncollinear lines
+    
+    % case #6: vertical + parallel lines
     elseif isnan(m1) && isnan(m2) && (x1 ~= x2)
         x_int = Inf;
         y_int = Inf;
-
-    % case #4: nonvertical + parallel lines
+        
+    % case #7: nonvertical + parallel lines
     elseif (m1 == m2) && ((y1-m1*x1) ~= (y2-m2*x2))
         x_int = Inf;
         y_int = Inf;
-
-    % --------------------------
-    % Single intersection point.
-    % --------------------------
-
-    % case #5: line 1 vertical + line 2 nonvertical
-    elseif isnan(m1)
-        x_int = x1;
-        y_int = y2+m2*(x_int-x2);
-        
-    % case #6: line 1 nonvertical + line 2 vertical
-    elseif isnan(m2)
-        x_int = x2;
-        y_int = y1+m1*(x_int-x1);
-        
-    % case #7: line 1 nonvertical + line 2 nonvertical
-    else
-        x_int = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
-        y_int = m1*(x_int-x1)+y1;
         
     end
-
+    
     % ---------
     % Warnings.
     % ---------
