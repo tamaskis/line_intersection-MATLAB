@@ -62,19 +62,21 @@ function [x_int,y_int] = line_intersection(l1,l2)
         x_int = x2;
         y_int = y1+m1*(x_int-x1);
         
-    % -----------------------------------------------
-    % Infinite intersection points (collinear lines).
-    % -----------------------------------------------
+    % ---------------------------------------------------------
+    % Infinite number of intersection points (collinear lines).
+    % ---------------------------------------------------------
     
-    % case #4: vertical + collinear
+    % case #4: vertical + collinear lines
     elseif isnan(m1) && isnan(m2) && (x1 == x2)
         x_int = x1;
         y_int = NaN;
+        warning('The two lines are collinear.');
         
-    % case #5: nonvertical + collinear
+    % case #5: nonvertical + collinear lines
     elseif (m1 == m2) && ((y1-m1*x1) == (y2-m2*x2))
         x_int = NaN;
         y_int = NaN;
+        warning('The two lines are collinear.');
         
     % ------------------------------------------
     % Intersection at infinity (parallel lines).
@@ -84,28 +86,14 @@ function [x_int,y_int] = line_intersection(l1,l2)
     elseif isnan(m1) && isnan(m2) && (x1 ~= x2)
         x_int = Inf;
         y_int = Inf;
+        warning('The two lines are parallel.')
         
     % case #7: nonvertical + parallel lines
     elseif (m1 == m2) && ((y1-m1*x1) ~= (y2-m2*x2))
         x_int = Inf;
         y_int = Inf;
-        
-    end
-    
-    % ---------
-    % Warnings.
-    % ---------
-    
-    % displays warning if two (non-vertical) lines are collinear (results
-    % in (xᵢₙₜ,yᵢₙₜ) = (NaN,NaN))
-    if isnan(x_int) && isnan(y_int)
-        warning('The two lines are collinear.');
-    end
-    
-    % displays warning if the two lines are parallel (results in 
-    % (xᵢₙₜ,yᵢₙₜ) = (±∞,±∞))
-    if abs(x_int) == Inf
         warning('The two lines are parallel.')
+        
     end
     
     %======================================================================
