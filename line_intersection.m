@@ -50,7 +50,7 @@ function [x_int,y_int] = line_intersection(l1,l2)
     % case #1: line 1 nonvertical + line 2 nonvertical + not parallel
     if (~isnan(m1)) && (~isnan(m2)) && (m1 ~= m2)
         x_int = ((m1*x1-m2*x2)-(y1-y2))/(m1-m2);
-        y_int = m1*(x_int-x1)+y1;
+        y_int = y1+m1*(x_int-x1);
         
     % case #2: line 1 vertical + line 2 nonvertical
     elseif isnan(m1) && (~isnan(m2))
@@ -103,10 +103,10 @@ function [x_int,y_int] = line_intersection(l1,l2)
     % ------
     % INPUT:
     % ------
-    %   line    - (1×1, 1×2, 1×3, or 1x4 double) vector defining the line:
-    %               --> x1: vertical line form, x = x₁
-    %               --> [m,b]: slope-intercept form, y = mx + b
-    %               --> [x1,y1,m]: point-slope form, y - y₁ = m(x - x₁)
+    %   l       - (1×1, 1×2, 1×3, or 1x4 double) vector defining the line:
+    %               --> [x1]: vertical line form, x = x₁
+    %               --> [m1,b1]: slope-intercept form, y = m₁x + b₁
+    %               --> [x1,y1,m1]: point-slope form, y - y₁ = m₁(x - x₁)
     %               --> [x1,y1,x2,y2]: two point form, {(x₁,y₁),(x₂,y₂)}
     %
     % -------
@@ -124,36 +124,36 @@ function [x_int,y_int] = line_intersection(l1,l2)
     %       (x₁,0) and has an undefined slope.
     %
     %======================================================================
-    function [x1,y1,m] = get_point_slope(line)
+    function [x1,y1,m] = get_point_slope(l)
         
         % input given in vertical line form
-        if length(line) == 1
-            x1 = line(1);
+        if length(l) == 1
+            x1 = l(1);
             y1 = 0;
             m = NaN;
             
         % input given in slope-intercept form
-        elseif length(line) == 2
+        elseif length(l) == 2
             x1 = 0;
-            y1 = line(2);
-            m = line(1);
+            y1 = l(2);
+            m = l(1);
             
         % input given in point-slope form
-        elseif length(line) == 3
-            x1 = line(1);
-            y1 = line(2);
-            m = line(3);
+        elseif length(l) == 3
+            x1 = l(1);
+            y1 = l(2);
+            m = l(3);
             
         % input given in two point form
-        else
-            m = (line(4)-line(2))/(line(3)-line(1));
+        elseif length(l) == 4
+            m = (l(4)-l(2))/(l(3)-l(1));
             if abs(m) == Inf
-                x1 = line(1);
+                x1 = l(1);
                 y1 = 0;
                 m = NaN;
             else
-                x1 = line(1);
-                y1 = line(2);
+                x1 = l(1);
+                y1 = l(2);
             end
         end
         
