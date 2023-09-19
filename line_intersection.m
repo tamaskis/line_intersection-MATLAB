@@ -7,7 +7,7 @@
 % See also polyxpoly.
 %
 % Copyright © 2021 Tamas Kis
-% Last Update: 2022-09-26
+% Last Update: 2023-09-18
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -20,15 +20,15 @@
 % INPUT:
 % ------
 %   l1      - (1×1, 1×2, 1×3, or 1x4 double) vector defining line 1:
-%               --> [x1]: vertical line form, x = x₁
-%               --> [m1,b1]: slope-intercept form, y = m₁x + b₁
-%               --> [x1,y1,m1]: point-slope form, y - y₁ = m₁(x - x₁)
-%               --> [x1,y1,x2,y2]: two point form, {(x₁,y₁),(x₂,y₂)}
+%               • [x1]: vertical line form, x = x₁
+%               • [m1,b1]: slope-intercept form, y = m₁x + b₁
+%               • [x1,y1,m1]: point-slope form, y - y₁ = m₁(x - x₁)
+%               • [x1,y1,x2,y2]: two point form, {(x₁,y₁),(x₂,y₂)}
 %   l2      - (1×1, 1×2, 1×3, or 1x4 double) vector defining line 2:
-%               --> [x2]: vertical line form, x = x₂
-%               --> [m2,b2]: slope-intercept form, y = m₂x + b₂
-%               --> [x2,y2,m2]: point-slope form, y - y₂ = m₂(x - x₂)
-%               --> [x3,y3,x4,y4]: two point form, {(x₃,y₃),(x₄,y₄)}
+%               • [x2]: vertical line form, x = x₂
+%               • [m2,b2]: slope-intercept form, y = m₂x + b₂
+%               • [x2,y2,m2]: point-slope form, y - y₂ = m₂(x - x₂)
+%               • [x3,y3,x4,y4]: two point form, {(x₃,y₃),(x₄,y₄)}
 %
 % -------
 % OUTPUT:
